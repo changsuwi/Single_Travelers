@@ -91,33 +91,29 @@ def json_mainbutton(recipient_id): #construct mainbutton json
     "id": recipient_id
     },
     "message":{
-    "text":"汪汪，我是聊天機器狗汪汪，我很聰明的，我可以做很多事:",
+    "text":"請選擇您想要的服務:",
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"聊天",
+        "title":"景點搜尋",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_CHAT"
       },
       {
         "content_type":"text",
-        "title":"交換明信片",
+        "title":"美食搜尋",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POSTCARD"
       },
       {
         "content_type":"text",
-        "title":"可愛寵物影片推播",
+        "title":"住宿搜尋",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_MOVIE"
       },
       {
         "content_type":"text",
-        "title":"領養資訊搜尋",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ADOPTION"
-      },
-      {
-        "content_type":"text",
-        "title":"民間送養資訊搜尋",
+        "title":"旅伴明信片",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ADOPTION"
       }
+      
     ]
   }
     }
