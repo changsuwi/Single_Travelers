@@ -29,7 +29,7 @@ def search_scene(sender_id,px,py):
     # collection; it is created automatically when we insert.
 
     scenes = db['travel']
-    template = new_template
+    template = new_template(sender_id)
     count=0
     for doc in scenes.find():
         if(pow(float(doc['Px']) - px ,2) + pow(float(doc['Py']) - py ,2)< 0.01):
