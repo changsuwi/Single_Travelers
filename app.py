@@ -64,7 +64,7 @@ def webhook():
                             
                             px = float(attachment[0]["payload"]["coordinates"]["long"])
                             py = float(attachment[0]["payload"]["coordinates"]["lat"])
-                            print (px + " " + py)
+                            
                             search_scene(px,py)
                     
                         
