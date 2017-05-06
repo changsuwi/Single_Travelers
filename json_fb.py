@@ -74,7 +74,7 @@ def typingon_json(recipient_id):
     log("sending  typingon to {recipient}".format(recipient=recipient_id))
     data = json.dumps({
             "recipient":{
-                    "id": recipient_id
+                    "id": recipient_id 
                     },
             "sender_action":"typing_on"})
             
@@ -96,22 +96,22 @@ def json_mainbutton(recipient_id): #construct mainbutton json
       {
         "content_type":"text",
         "title":"景點搜尋",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_CHAT"
+        "payload":"mainbutton_1"
       },
       {
         "content_type":"text",
         "title":"美食搜尋",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_POSTCARD"
+        "payload":"mainbutton_2"
       },
       {
         "content_type":"text",
         "title":"住宿搜尋",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_MOVIE"
+        "payload":"mainbutton_3"
       },
       {
         "content_type":"text",
         "title":"旅伴明信片",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ADOPTION"
+        "payload":"mainbutton_4"
       }
       
     ]
@@ -119,7 +119,24 @@ def json_mainbutton(recipient_id): #construct mainbutton json
     }
     )
     sendtofb(data)
-
+def json_location(recipient_id):
+    log("sending location to {recipient}".format(recipient=recipient_id))
+    data = json.dumps(
+            {
+              "recipient":{
+                "id": recipient_ids
+              },
+              "message":{
+                "text":"Please share your location:",
+                "quick_replies":[
+                  {
+                    "content_type":"location",
+                  }
+                ]
+              }
+            }
+        )
+    sendtofb(data)
 def json_video(recipient_id):
     log("sending video to {recipient}".format(recipient=recipient_id))
     uri = 'mongodb://vic010744:vic32823@ds135700.mlab.com:35700/heroku_4w25h5pt'

@@ -46,14 +46,17 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    if(messaging_event["message"].has_key("text")):
+                    if(messaging_event["message"].has_key("payload")):
+                        if(payload == "mainbutton1"):
+                            json_location(sender_id)
+                    elif(messaging_event["message"].has_key("text")):
                         message_text = messaging_event["message"]["text"]  # the message's text
                         print(sender_id) #test
                         if(message_text=="Hello" or message_text=="Hi" or message_text==u"嗨" or message_text==u"妳好" or message_text==u"你好" or message_text=="hello" or message_text=="hi" or message_text==u"哈囉"):
                             
                             json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
                             json_mainbutton(sender_id)
-                            
+                    
                         
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
