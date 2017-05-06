@@ -38,6 +38,7 @@ def search_scene(sender_id,px,py):
             discription = doc['Toldescribe'].encode('utf-8')
             if(count>=8):
                 template = add_template(template,u"想看更多?","")
+                break
             else:
                 template = add_template(template,name,discription)
     if(count == 0):
