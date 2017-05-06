@@ -36,7 +36,10 @@ def search_scene(sender_id,px,py):
             count = count+1
             name=doc['Name'].encode('utf-8')
             discription = doc['Toldescribe'].encode('utf-8')
-            template = add_template(template,name,discription)
+            if(count>=8):
+                template = add_template(template,u"想看更多?","")
+            else:
+                template = add_template(template,name,discription)
     if(count == 0):
         json_message(sender_id,"嗚嗚嗚不好意思，找不到相對應的結果")
     else:
