@@ -8,6 +8,7 @@ Created on Sat May 06 17:09:05 2017
 # -*- coding:utf-8 -*-
 import sys
 import pymongo
+from  sendtofb_log import log
 ### Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
 uri = 'mongodb://vic010744:vic32823@ds023455.mlab.com:23455/heroku_xfc3zss3' 
 
@@ -16,7 +17,7 @@ uri = 'mongodb://vic010744:vic32823@ds023455.mlab.com:23455/heroku_xfc3zss3'
 ###############################################################################
 
 def search_scene(px,py):
-
+    log("sending search_scene")
     client = pymongo.MongoClient(uri)
 
     db = client.get_default_database()

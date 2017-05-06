@@ -61,8 +61,10 @@ def webhook():
                     elif(messaging_event["message"].has_key("attachments")):
                         attachment = messaging_event["message"]["attachments"]
                         if(attachment[0]["title"] == u"Facebook HQ"):
+                            
                             px = float(attachment["payload"]["coordinates"]["long"])
                             py = float(attachment["payload"]["coordinates"]["lat"])
+                            print (px + " " + py)
                             search_scene(px,py)
                     
                         
