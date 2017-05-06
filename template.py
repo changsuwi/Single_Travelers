@@ -20,7 +20,7 @@ def new_template(sender_id):
                                     }
                                 }
                 }
-    return(template)
+    return template
 def add_template(template,title,description):
     #add new information in to the template
     bobble={
