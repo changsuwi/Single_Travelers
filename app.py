@@ -7,7 +7,7 @@ Created on Sat May 06 01:36:19 2017
 
 # coding=utf-8
 from sendtofb_log import log
-from json_fb import json_message,json_mainbutton
+from json_fb import json_message,json_mainbutton,json_location
 import os
 
 

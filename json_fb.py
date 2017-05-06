@@ -124,7 +124,7 @@ def json_location(recipient_id):
     data = json.dumps(
             {
               "recipient":{
-                "id": recipient_ids
+                "id": recipient_id
               },
               "message":{
                 "text":"Please share your location:",
