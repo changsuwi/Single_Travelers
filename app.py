@@ -8,6 +8,7 @@ Created on Sat May 06 01:36:19 2017
 # coding=utf-8
 from sendtofb_log import log
 from json_fb import json_message,json_mainbutton,json_location
+from db import search_scene
 import os
 
 
@@ -57,6 +58,12 @@ def webhook():
                             
                             json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
                             json_mainbutton(sender_id)
+                    elif(messaging_event["message"].has_key("attachments")):
+                        attachment = messaging_event["message"]["attachments"]
+                        if(attachment["title"] == u"Facebook HQ"):
+                            px = float(attachment["payload"]["coordinates"]["long"])
+                            py = float(attachment["payload"]["coordinates"]["lat"])
+                            search_scene(px,py)
                     
                         
                 if messaging_event.get("delivery"):  # delivery confirmation

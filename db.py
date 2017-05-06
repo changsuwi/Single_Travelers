@@ -15,7 +15,7 @@ uri = 'mongodb://vic010744:vic32823@ds023455.mlab.com:23455/heroku_xfc3zss3'
 # main
 ###############################################################################
 
-def main(args):
+def search_scene(px,py):
 
     client = pymongo.MongoClient(uri)
 
@@ -25,9 +25,7 @@ def main(args):
     # collection; it is created automatically when we insert.
 
     scenes = db['travel']
-    for doc in scenes.find({'Gov':'315080900H'}):
-        if(u"琉球鄉" in doc['Add']):
+    for doc in scenes.find():
+        if(pow(float(doc['Px']) - px ,2) + pow(float(doc['Py']) - py ,2)< 0.01):
             print doc['Name'].encode('utf-8')
             
-if __name__ == '__main__':
-    main(sys.argv[1:])
