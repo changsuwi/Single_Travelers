@@ -64,10 +64,8 @@ def webhook():
                             
                             px = float(attachment[0]["payload"]["coordinates"]["long"])
                             py = float(attachment[0]["payload"]["coordinates"]["lat"])
+                            search_scene(sender_id,px,py)
                             
-                            search_scene(px,py)
-                    
-                        
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
