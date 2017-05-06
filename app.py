@@ -48,7 +48,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     if(messaging_event["message"].has_key("quick_reply")):
                         payload = messaging_event["message"]["quick_reply"]["payload"]
-                        if(payload == "mainbutton1"):
+                        if(payload == "mainbutton_1"):
                             json_location(sender_id)
                     elif(messaging_event["message"].has_key("text")):
                         message_text = messaging_event["message"]["text"]  # the message's text
