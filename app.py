@@ -7,7 +7,7 @@ Created on Sat May 06 01:36:19 2017
 
 # coding=utf-8
 from sendtofb_log import log
-from json_fb import json_message
+from json_fb import json_message,json_mainbutton
 import os
 
 
@@ -52,6 +52,7 @@ def webhook():
                         if(message_text=="Hello" or message_text=="Hi" or message_text==u"嗨" or message_text==u"妳好" or message_text==u"你好" or message_text=="hello" or message_text=="hi" or message_text==u"哈囉"):
                             
                             json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
+                            json_mainbutton(sender_id)
                             
                         
                 if messaging_event.get("delivery"):  # delivery confirmation
