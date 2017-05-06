@@ -25,8 +25,7 @@ def add_template(template,title,description):
     #add new information in to the template
     bobble={
         "title":title,
-        "subtitle":description,
-        
+        "subtitle":description
         } 
     template["message"]["attachment"]["payload"]["elements"].append(bobble)
     return template
