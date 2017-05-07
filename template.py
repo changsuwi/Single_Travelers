@@ -25,6 +25,7 @@ def add_template(template,title,description):
     #add new information in to the template
     bobble={
         "title":title,
+        "image_url":"http://i.imgur.com/cSEzcgr.jpg",
         "subtitle":description
         } 
     template["message"]["attachment"]["payload"]["elements"].append(bobble)
