@@ -32,16 +32,17 @@ def search_scene(sender_id, px, py, count2):
     template = new_template(sender_id)
     count = 0
     for doc in scenes.find():
-        if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.05) and (count >= count2):
+        if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.05):
             count = count + 1
-            name = doc['Name'].encode('utf-8')
-            discription = doc['Toldescribe'].encode('utf-8')
-            image_url = doc['Picture1']
-            if(count >= count2 + 8):
-                template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count)
-                break
-            else:
-                template = add_template(template, name, discription, image_url, px, py, count)
+            if(count >= count2):
+                name = doc['Name'].encode('utf-8')
+                discription = doc['Toldescribe'].encode('utf-8')
+                image_url = doc['Picture1']
+                if(count >= count2 + 8):
+                    template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count)
+                    break
+                else:
+                    template = add_template(template, name, discription, image_url, px, py, count)
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
     else:
