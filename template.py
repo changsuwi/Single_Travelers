@@ -32,7 +32,7 @@ def add_template(template, title, description, image_url, px, py, count):
             "title": title,
             "image_url": image_url,
             "subtitle": description,
-            "button":
+            "buttons":
             [
                 {
                     "type": "postback",
