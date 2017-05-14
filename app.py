@@ -39,12 +39,9 @@ def webhook():
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
+                sender_id = messaging_event["sender"]["id"]
 
                 if messaging_event.get("message"):  # someone sent us a message
-                    # the facebook ID of the person sending you the message
-                    sender_id = messaging_event["sender"]["id"]
-                    # the recipient's ID, which should be your page's facebook
-                    # ID
                     if("quick_reply" in messaging_event["message"]):
                         payload = messaging_event["message"][
                             "quick_reply"]["payload"]
@@ -66,7 +63,7 @@ def webhook():
                                        "coordinates"]["long"])
                             py = float(attachment[0]["payload"][
                                        "coordinates"]["lat"])
-                            search_scene(sender_id, px, py)
+                            search_scene(sender_id, px, py, 0)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -76,7 +73,11 @@ def webhook():
 
                 # user clicked/tapped "postback" button in earlier message
                 if messaging_event.get("postback"):
-                    pass
+                    wantwatch = messaging_event["postback"]["payload"].split()
+                    px = int(wantwatch[0])
+                    py = int(wantwatch[1])
+                    count = int(wantwatch[2])
+                    search_scene(sender_id, px, py, count)
 
     return "ok", 200
 
