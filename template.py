@@ -27,7 +27,7 @@ def new_template(sender_id):
 
 def add_template(template, title, description, image_url, px, py, count):
     # add new information in to the template
-    if(title.encode('utf-8') == u'想看更多?'):
+    if(title == u'想看更多?'):
         bobble = {
             "title": title,
             "image_url": image_url,
