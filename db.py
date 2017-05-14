@@ -32,7 +32,7 @@ def search_scene(sender_id, px, py, count2):
     template = new_template(sender_id)
     count = 0
     for doc in scenes.find():
-        if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.35):
+        if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
             count = count + 1
             if(count >= count2):
                 name = doc['Name'].encode('utf-8')
