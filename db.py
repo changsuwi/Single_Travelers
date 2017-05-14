@@ -38,7 +38,7 @@ def search_scene(sender_id, px, py):
             discription = doc['Toldescribe'].encode('utf-8')
             image_url = doc['Picture1']
             if(count >= 8):
-                template = add_template(template, u"想看更多?", u"看更多")
+                template = add_template(template, u"想看更多?", u"看更多", image_url)
                 break
             else:
                 template = add_template(template, name, discription, image_url)
