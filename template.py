@@ -25,8 +25,23 @@ def new_template(sender_id):
     return template
 
 
-def add_template(template, title, description, image_url):
+def add_template(template, title, description, image_url, px, py, count):
     # add new information in to the template
+    if(title == u'想看更多?'):
+        bobble = {
+            "title": title,
+            "image_url": image_url,
+            "subtitle": description,
+            "button":
+            [
+                {
+                    "type": "postback",
+                    "title": "看更多",
+                    "payload": str(px) + " " + str(py) + " " + str(count)
+                }
+            ]
+        }
+
     bobble = {
         "title": title,
         "image_url": image_url,
