@@ -17,6 +17,9 @@ uri = 'mongodb://vic010744:vic32823@ds023455.mlab.com:23455/heroku_xfc3zss3'
 ###############################################################################
 # main
 ###############################################################################
+client = pymongo.MongoClient(uri)
+
+db = client.get_default_database()
 
 
 def search_scene(sender_id, px, py, count2, mode, tag):
@@ -66,3 +69,47 @@ def search_scene(sender_id, px, py, count2, mode, tag):
     else:
         data = json.dumps(template)
         sendtofb(data)
+
+
+def upload_flag(flag, sender_id):
+    Category = db['flag']
+    query = {'ID': sender_id}
+    if(Category.count(query) == 0):
+        Category.insert_one({'ID': sender_id, 'flag': flag})
+    else:
+        query = {'ID': sender_id}
+        Category.update(query, {'$set': {'flag': flag}})
+
+
+def get_flag(sender_id):
+    Category = db['flag']
+    dat = Category.find_one({'ID': sender_id})
+    return dat['flag']
+
+
+def upload_db_photo_url(url, sender_id):
+    Postcard = db['postcard']
+    query = {'ID': sender_id}
+    if(Postcard.count(query) == 0):
+        SEED_DATA = {
+            'url': url,
+            'ID': sender_id
+        }
+        print Postcard.insert_one(SEED_DATA)
+    else:
+        Postcard.update(query, {'$set': {'url': url}})
+
+
+def upload_db_intro(text, sender_id):
+    Postcard = db['postcard']
+    query = {'ID': sender_id}
+    Postcard.update(
+        query, {'$set': {'intro': text, 'match': '0', 'match_id': "None"}})
+    client.close()
+
+
+def get_mail(sender_id):
+    Postcard = db['postcard']
+    query = {'ID': sender_id}
+    data = Postcard.find_one(query)
+    return data

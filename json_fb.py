@@ -9,67 +9,6 @@ from sendtofb_log import sendtofb, log
 import json
 
 
-def get_start():
-    data = json.dumps(
-        {
-            "get_started":
-            {
-                "payload": "GET_STARTED_PAYLOAD"
-            }
-        })
-    sendtofb(data)
-
-
-def set_manu():
-    data = json.dumps(
-        {
-            "persistent_menu": [
-                {
-                    "locale": "default",
-                    "composer_input_disabled": False,
-                    "call_to_actions": [
-                        {
-                              "title": u"聊天",
-                              "type": "postback",
-
-                        },
-                        {
-                            "type": "postback",
-                            "title": u"交換明信片",
-                        },
-                        {
-                            "type": "postback",
-                            "title": u"可愛寵物影片推播",
-                        },
-                        {
-                            "type": "nested",
-                            "title": u"領養資訊搜尋",
-                            "call_to_actions": [
-                                {
-                                    "title": "Pay Bill",
-                                    "type": "postback",
-                                    "payload": "PAYBILL_PAYLOAD"
-                                },
-                                {
-                                    "title": "History",
-                                    "type": "postback",
-                                    "payload": "HISTORY_PAYLOAD"
-                                }
-
-                            ]
-                        },
-                        {
-                            "locale": "zh_CN",
-                            "composer_input_disabled": False
-                        }
-                    ]
-                }
-            ]
-        }
-    )
-    sendtofb(data)
-
-
 def typingon_json(recipient_id):
 
     # construct typing on json
@@ -143,6 +82,24 @@ def json_location(recipient_id):
             }
         }
     )
+    sendtofb(data)
+
+
+def json_photo(recipient_id, url):
+    log("sending photo to {recipient}".format(recipient=recipient_id))
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": url
+                }
+            }
+        }
+    })
     sendtofb(data)
 
 
