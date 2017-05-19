@@ -46,10 +46,10 @@ def webhook():
                         payload = messaging_event["message"][
                             "quick_reply"]["payload"]
                         if(payload == "mainbutton_1"):
-                            json_message(sender_id, '你可以分享你的地點，來獲得離你最近的景點資訊')
-                            json_location(sender_id)
-                            json_message(sender_id, '或是直接輸入地點詢問,例如')
+                            json_message(sender_id, '你可以直接輸入地點詢問,例如')
                             json_message(sender_id, '我想找台南的景點')
+                            json_message(sender_id, '或是分享你的地點，來獲得離你最近的景點資訊')
+                            json_location(sender_id)
                     elif("text" in messaging_event["message"]):
                         message_text = messaging_event["message"][
                             "text"]  # the message's text
