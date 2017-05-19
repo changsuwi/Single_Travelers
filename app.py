@@ -58,7 +58,7 @@ def webhook():
 
                             json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
                             json_mainbutton(sender_id)
-                        elif '台南' in message_text:
+                        elif u'台南' in message_text:
                             search_scene(sender_id, 0, 0, 0, 1, 0)
 
                     elif("attachments" in messaging_event["message"]):
