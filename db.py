@@ -19,7 +19,7 @@ uri = 'mongodb://vic010744:vic32823@ds023455.mlab.com:23455/heroku_xfc3zss3'
 ###############################################################################
 
 
-def search_scene(sender_id, px, py, count2):
+def search_scene(sender_id, px, py, count2, mode, tag):
     log("sending search_scene")
     client = pymongo.MongoClient(uri)
 
@@ -31,19 +31,36 @@ def search_scene(sender_id, px, py, count2):
     scenes = db['travel']
     template = new_template(sender_id)
     count = 0
-    for doc in scenes.find():
-        if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
-            count = count + 1
-            if(count >= count2):
-                name = doc['Name'].encode('utf-8')
-                discription = doc['Toldescribe'].encode('utf-8')
-                image_url = doc['Picture1']
-                place_url = doc['place_url']
-                if(count >= count2 + 8):
-                    template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url)
-                    break
-                else:
-                    template = add_template(template, name, discription, image_url, px, py, count, place_url)
+    if mode == 0:
+        for doc in scenes.find():
+            if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
+                count = count + 1
+                if(count >= count2):
+                    name = doc['Name'].encode('utf-8')
+                    discription = doc['Toldescribe'].encode('utf-8')
+                    image_url = doc['Picture1']
+                    place_url = doc['place_url']
+                    if(count >= count2 + 8):
+                        template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url)
+                        break
+                    else:
+                        template = add_template(template, name, discription, image_url, px, py, count, place_url)
+    else:
+        if tag == 0:   # tainan
+            for doc in scenes.find():
+                if u'tainan' in doc['Add'] or u'台南' in doc['Add'] or u'Tainan' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url)
+                    count = count + 1
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
     else:
