@@ -52,7 +52,7 @@ def add_template(template, title, description, image_url, px, py, count, place_u
                     {
                         "type": "postback",
                         "title": "看更多",
-                        "payload": tag + " " + str(count)
+                        "payload": str(tag) + " " + str(count)
                     }
                 ]
             }
