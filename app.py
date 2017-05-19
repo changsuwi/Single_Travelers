@@ -84,10 +84,15 @@ def webhook():
                         json_message(sender_id, place_url)
                     else:
                         wantwatch = messaging_event["postback"]["payload"].split()
-                        px = float(wantwatch[0])
-                        py = float(wantwatch[1])
-                        count = int(wantwatch[2])
-                        search_scene(sender_id, px, py, count, 0, 0)
+                        if len(wantwatch) == 3:
+                            px = float(wantwatch[0])
+                            py = float(wantwatch[1])
+                            count = int(wantwatch[2])
+                            search_scene(sender_id, px, py, count, 0, 0)
+                        else:
+                            tag = int(wantwatch[0])
+                            count = int(wantwatch[1])
+                            search_scene(sender_id, 0, 0, count, 1, tag)
 
     return "ok", 200
 
