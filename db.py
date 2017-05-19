@@ -41,10 +41,10 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                     image_url = doc['Picture1']
                     place_url = doc['place_url']
                     if(count >= count2 + 8):
-                        template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url)
+                        template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
                         break
                     else:
-                        template = add_template(template, name, discription, image_url, px, py, count, place_url)
+                        template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
     else:
         if tag == 0:   # tainan
             for doc in scenes.find():
@@ -56,10 +56,10 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                         image_url = doc['Picture1']
                         place_url = doc['place_url']
                         if(count >= count2 + 8):
-                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url)
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
                             break
                         else:
-                            template = add_template(template, name, discription, image_url, px, py, count, place_url)
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
