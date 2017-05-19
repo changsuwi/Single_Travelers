@@ -46,7 +46,10 @@ def webhook():
                         payload = messaging_event["message"][
                             "quick_reply"]["payload"]
                         if(payload == "mainbutton_1"):
+                            json_message(sender_id, '你可以分享你的地點，來獲得離你最近的景點資訊')
                             json_location(sender_id)
+                            json_message(sender_id, '或是直接輸入地點詢問,例如')
+                            json_message(sender_id, '我想找台南的景點')
                     elif("text" in messaging_event["message"]):
                         message_text = messaging_event["message"][
                             "text"]  # the message's text
@@ -55,6 +58,9 @@ def webhook():
 
                             json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
                             json_mainbutton(sender_id)
+                        elif '台南' in message_text:
+                            search_scene(sender_id, 0, 0, 0, 1, 0)
+
                     elif("attachments" in messaging_event["message"]):
                         attachment = messaging_event["message"]["attachments"]
                         if(attachment[0]["type"] == u"location"):
@@ -63,7 +69,7 @@ def webhook():
                                        "coordinates"]["long"])
                             py = float(attachment[0]["payload"][
                                        "coordinates"]["lat"])
-                            search_scene(sender_id, px, py, 0)
+                            search_scene(sender_id, px, py, 0, 0, 0)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -81,7 +87,7 @@ def webhook():
                         px = float(wantwatch[0])
                         py = float(wantwatch[1])
                         count = int(wantwatch[2])
-                        search_scene(sender_id, px, py, count)
+                        search_scene(sender_id, px, py, count, 0, 0)
 
     return "ok", 200
 
