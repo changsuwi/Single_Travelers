@@ -73,11 +73,15 @@ def webhook():
 
                 # user clicked/tapped "postback" button in earlier message
                 if messaging_event.get("postback"):
-                    wantwatch = messaging_event["postback"]["payload"].split()
-                    px = float(wantwatch[0])
-                    py = float(wantwatch[1])
-                    count = int(wantwatch[2])
-                    search_scene(sender_id, px, py, count)
+                    if 'http' in messaging_event["postback"]["payload"]:
+                        place_url = messaging_event["postback"]["payload"]
+                        json_message(sender_id, place_url)
+                    else:
+                        wantwatch = messaging_event["postback"]["payload"].split()
+                        px = float(wantwatch[0])
+                        py = float(wantwatch[1])
+                        count = int(wantwatch[2])
+                        search_scene(sender_id, px, py, count)
 
     return "ok", 200
 
