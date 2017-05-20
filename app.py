@@ -53,7 +53,7 @@ def webhook():
                             json_message(sender_id, '或是分享你的地點，來獲得離你最近的景點資訊')
                             json_location(sender_id)
                         elif payload == "mainbutton_4":
-                            upload_flag(4, sender_id)
+                            upload_flag(2, sender_id)
                             json_message(
                                 sender_id, '旅行明信片是一個特別的社交方式，藉由互送明信片，分享旅途的美麗風景，認識其他熱愛旅行的旅人！')
                             json_message(sender_id, "請先傳送一張旅途的美麗風景，作為明信片的封面吧~")
@@ -67,7 +67,7 @@ def webhook():
                             json_mainbutton(sender_id)
                         elif u'台南' in message_text and get_flag(sender_id) == 1:
                             search_scene(sender_id, 0, 0, 0, 1, 0)
-                        elif get_flag(sender_id) == 4:
+                        elif get_flag(sender_id) == 2:
                             upload_db_intro(message_text, sender_id)
                             json_message(sender_id, "已完成，請耐心等待神秘的明信片")
 
@@ -98,7 +98,21 @@ def webhook():
 
                 # user clicked/tapped "postback" button in earlier message
                 if messaging_event.get("postback"):
-                    if 'http' in messaging_event["postback"]["payload"]:
+                    if messaging_event["postback"]["payload"] == 'GET_STARTED_PAYLOAD':
+                        json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
+                        json_mainbutton(sender_id)
+                    elif messaging_event["postback"]["payload"] == 'main_button1':
+                        upload_flag(1, sender_id)
+                        json_message(sender_id, '你可以直接輸入地點詢問,例如')
+                        json_message(sender_id, '我想找台南的景點')
+                        json_message(sender_id, '或是分享你的地點，來獲得離你最近的景點資訊')
+                        json_location(sender_id)
+                    elif messaging_event["postback"]["payload"] == 'main_button2':
+                        upload_flag(2, sender_id)
+                        json_message(
+                                sender_id, '旅行明信片是一個特別的社交方式，藉由互送明信片，分享旅途的美麗風景，認識其他熱愛旅行的旅人！')
+                        json_message(sender_id, "請先傳送一張旅途的美麗風景，作為明信片的封面吧~")
+                    elif 'http' in messaging_event["postback"]["payload"]:
                         place_url = messaging_event["postback"]["payload"]
                         json_message(sender_id, place_url)
                     else:

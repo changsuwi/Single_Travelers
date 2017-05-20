@@ -44,18 +44,8 @@ def json_mainbutton(recipient_id):  # construct mainbutton json
                 },
                 {
                     "content_type": "text",
-                    "title": "美食搜尋",
-                    "payload": "mainbutton_2"
-                },
-                {
-                    "content_type": "text",
-                    "title": "住宿搜尋",
-                    "payload": "mainbutton_3"
-                },
-                {
-                    "content_type": "text",
                     "title": "旅伴明信片",
-                    "payload": "mainbutton_4"
+                    "payload": "mainbutton_2"
                 }
 
             ]
