@@ -1,0 +1,8 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "greeting":[
+    {
+      "locale":"default",
+      "text”:”您好，我是旅行助理，我可以為你找尋景點\n我也可以為你分享旅行明信片，可以透過本bot，將明信片送給同樣愛好旅行的旅行者”
+    }
+  ] 
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAKVyfkhI5sBAJMLAoeKFWQ49GsbrUiz9r4UiqmZBkLs5qaytnqBQLyAqzeY9vtrYZCkKaxL7LyXnoYM4GiekAQP5ddkuRV6489FyyqtUY7IZAFsFg36gqO47iAypqdToES4ZBVlWZBUN6ZAore45PjR9RNjqj9goftehGYFy93gZDZD"
