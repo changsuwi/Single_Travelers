@@ -24,6 +24,8 @@ db = client.get_default_database()
 
 
 def search_scene(sender_id, px, py, count2, mode, tag):
+    count = 0
+
     def around(cursor):
         global template, count, count2
         for doc in cursor:
@@ -53,7 +55,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
 
     scenes = db['travel']
     template = new_template(sender_id)
-    count = 0
+
     if mode == 0:
         cursors = scenes.parallel_scan(4)
         threads = [threading.Thread(target=around, args=(cursor,))
