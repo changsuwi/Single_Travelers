@@ -7,6 +7,7 @@ Created on Sat May 06 17:09:05 2017
 
 # -*- coding:utf-8 -*-
 import pymongo
+import threading
 import json
 from sendtofb_log import log, sendtofb
 from json_fb import json_message
@@ -23,6 +24,23 @@ db = client.get_default_database()
 
 
 def search_scene(sender_id, px, py, count2, mode, tag):
+    def around(cursor, count, count2, template):
+        for doc in cursor:
+            if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
+                count = count + 1
+                if(count >= count2):
+                    name = doc['Name'].encode('utf-8')
+                    discription = doc['Toldescribe'].encode('utf-8')
+                    image_url = doc['Picture1']
+                    place_url = doc['place_url']
+                    if(count >= count2 + 8):
+                        template = add_template(
+                            template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                        break
+                    else:
+                        template = add_template(
+                            template, name, discription, image_url, px, py, count, place_url, mode, tag)
+
     log("sending search_scene")
     client = pymongo.MongoClient(uri)
 
@@ -35,19 +53,14 @@ def search_scene(sender_id, px, py, count2, mode, tag):
     template = new_template(sender_id)
     count = 0
     if mode == 0:
-        for doc in scenes.find():
-            if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
-                count = count + 1
-                if(count >= count2):
-                    name = doc['Name'].encode('utf-8')
-                    discription = doc['Toldescribe'].encode('utf-8')
-                    image_url = doc['Picture1']
-                    place_url = doc['place_url']
-                    if(count >= count2 + 8):
-                        template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
-                        break
-                    else:
-                        template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+        cursors = scenes.parallel_scan(4)
+        threads = [threading.Thread(target=around, args=(cursor, count, count2, template))
+                   for cursor in cursors]
+        for thread in threads:
+            thread.start()
+
+        for thread in threads:
+            thread.join()
     else:
         if tag == 0:   # tainan
             for doc in scenes.find():
@@ -59,10 +72,12 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                         image_url = doc['Picture1']
                         place_url = doc['place_url']
                         if(count >= count2 + 8):
-                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            template = add_template(
+                                template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
                             break
                         else:
-                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                            template = add_template(
+                                template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
