@@ -27,7 +27,6 @@ def search_scene(sender_id, px, py, count2, mode, tag):
     count = 0
 
     def around(cursor):
-        global template, count, count2
         for doc in cursor:
             if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
                 count = count + 1
