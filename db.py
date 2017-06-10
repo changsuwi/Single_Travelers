@@ -28,6 +28,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
         for doc in cursor:
             if (pow(float(doc['Px']) - px, 2) + pow(float(doc['Py']) - py, 2) < 0.035):
                 count = count + 1
+                print count
                 if(count >= count2):
                     name = doc['Name'].encode('utf-8')
                     discription = doc['Toldescribe'].encode('utf-8')
