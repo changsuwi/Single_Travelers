@@ -260,7 +260,6 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                         else:
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
-        
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
     else:
