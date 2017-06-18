@@ -318,8 +318,11 @@ def upload_db_intro(text, sender_id):
     client.close()
 
 
-def get_mail(sender_id):
+def get_mail(my_id):
     Postcard = db['postcard']
+    query = {'ID': my_id}
+    my_data = Postcard.find_one(query)
+    sender_id = my_data['match_id']
     query = {'ID': sender_id}
     data = Postcard.find_one(query)
     return data
