@@ -139,6 +139,12 @@ def webhook():
                     elif 'http' in messaging_event["postback"]["payload"]:
                         place_url = messaging_event["postback"]["payload"]
                         json_message(sender_id, place_url)
+                    elif messaging_event['postback']['payload'] == 'get_match_mail':
+                        mail = get_mail(sender_id)
+                        intro = mail['intro']
+                        img_url = mail['url']
+                        json_photo(sender_id, img_url)
+                        json_message(sender_id, intro.encode('utf-8'))
                     else:
                         wantwatch = messaging_event[
                             "postback"]["payload"].split()
