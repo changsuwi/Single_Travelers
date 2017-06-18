@@ -65,6 +65,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 1:
+            for doc in scenes.find():
                 if u'台北' in doc['Add'] or u'臺北' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -79,6 +80,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 2:
+            for doc in scenes.find():
                 if u'台中' in doc['Add'] or u'臺中' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -93,6 +95,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 3:
+            for doc in scenes.find():
                 if u'台東' in doc['Add'] or u'臺東' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -107,6 +110,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 4:
+            for doc in scenes.find():
                 if u'桃園' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -121,6 +125,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 5:
+            for doc in scenes.find():
                 if u'新竹' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -135,6 +140,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 6:
+            for doc in scenes.find():
                 if u'苗栗' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -149,6 +155,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 7:
+            for doc in scenes.find():
                 if u'彰化' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -163,6 +170,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 8:
+            for doc in scenes.find():
                 if u'南投' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -177,6 +185,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 9:
+            for doc in scenes.find():
                 if u'雲林' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -191,6 +200,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 10:
+            for doc in scenes.find():
                 if u'嘉義' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -205,6 +215,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 11:
+            for doc in scenes.find():
                 if u'高雄' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -219,6 +230,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 12:
+            for doc in scenes.find():
                 if u'屏東' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -233,6 +245,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 13:
+            for doc in scenes.find():
                 if u'宜蘭' in doc['Add']:
                     print "in find"
                     if count >= count2:
@@ -247,6 +260,7 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
         elif tag == 14:
+            for doc in scenes.find():
                 if u'花蓮' in doc['Add']:
                     print "in find"
                     if count >= count2:
