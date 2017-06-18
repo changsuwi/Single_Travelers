@@ -61,12 +61,36 @@ def webhook():
                         message_text = messaging_event["message"][
                             "text"]  # the message's text
                         print(sender_id)  # test
-                        if(message_text == "Hello" or message_text == "Hi" or message_text == u"嗨" or message_text == u"妳好" or message_text == u"你好" or message_text == "hello" or message_text == "hi" or message_text == u"哈囉"):
-
-                            json_message(sender_id, "你好，我是旅行助理。專為愛旅行的你所打造!")
-                            json_mainbutton(sender_id)
-                        elif u'台南' in message_text and get_flag(sender_id) == 1:
+                        if (u'台南' in message_text or u'臺南' in message_text)and get_flag(sender_id) == 1:
                             search_scene(sender_id, 0, 0, 0, 1, 0)
+                        elif (u'台北' in message_text or u'臺北' in message_text)and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 1)
+                        elif (u'台中' in message_text or u'臺中' in message_text)and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 2)
+                        elif (u'台東' in message_text or u'臺東' in message_text)and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 3)
+                        elif u'桃園' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 4)
+                        elif u'新竹' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 5)
+                        elif u'苗栗' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 6)
+                        elif u'彰化' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 7)
+                        elif u'南投' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 8)
+                        elif u'雲林' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 9)
+                        elif u'嘉義' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 10)
+                        elif u'高雄' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 11)
+                        elif u'屏東' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 12)
+                        elif u'宜蘭' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 13)
+                        elif u'花蓮' in message_text and get_flag(sender_id) == 1:
+                            search_scene(sender_id, 0, 0, 0, 1, 14)
                         elif get_flag(sender_id) == 2:
                             upload_db_intro(message_text, sender_id)
                             json_message(sender_id, "已完成，請耐心等待神秘的明信片")
@@ -110,7 +134,7 @@ def webhook():
                     elif messaging_event["postback"]["payload"] == 'main_button2':
                         upload_flag(2, sender_id)
                         json_message(
-                                sender_id, '旅行明信片是一個特別的社交方式，藉由互送明信片，分享旅途的美麗風景，認識其他熱愛旅行的旅人！')
+                            sender_id, '旅行明信片是一個特別的社交方式，藉由互送明信片，分享旅途的美麗風景，認識其他熱愛旅行的旅人！')
                         json_message(sender_id, "請先傳送一張旅途的美麗風景，作為明信片的封面吧~")
                     elif 'http' in messaging_event["postback"]["payload"]:
                         place_url = messaging_event["postback"]["payload"]

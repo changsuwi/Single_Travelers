@@ -64,6 +64,203 @@ def search_scene(sender_id, px, py, count2, mode, tag):
                         else:
                             template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
                     count = count + 1
+        elif tag == 1:
+                if u'台北' in doc['Add'] or u'臺北' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 2:
+                if u'台中' in doc['Add'] or u'臺中' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 3:
+                if u'台東' in doc['Add'] or u'臺東' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 4:
+                if u'桃園' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 5:
+                if u'新竹' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 6:
+                if u'苗栗' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 7:
+                if u'彰化' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 8:
+                if u'南投' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 9:
+                if u'雲林' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 10:
+                if u'嘉義' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 11:
+                if u'高雄' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 12:
+                if u'屏東' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 13:
+                if u'宜蘭' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        elif tag == 14:
+                if u'花蓮' in doc['Add']:
+                    print "in find"
+                    if count >= count2:
+                        name = doc['Name'].encode('utf-8')
+                        discription = doc['Toldescribe'].encode('utf-8')
+                        image_url = doc['Picture1']
+                        place_url = doc['place_url']
+                        if(count >= count2 + 8):
+                            template = add_template(template, u"想看更多?", u"看更多", image_url, px, py, count, place_url, mode, tag)
+                            break
+                        else:
+                            template = add_template(template, name, discription, image_url, px, py, count, place_url, mode, tag)
+                    count = count + 1
+        
     if count == 0 or (count < count2):
         json_message(sender_id, "嗚嗚嗚不好意思，找不到相對應的結果")
     else:
